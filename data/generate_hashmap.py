@@ -1,13 +1,18 @@
 from collections import defaultdict
+import os
+
+directory_of_generate_hash = os.path.dirname(os.path.abspath(__file__))
 
 #Helper Functions:
 files = [
-    './files/hollywood_celebs.txt',
-    './files/forbes_billionaires.txt',
-    './files/general_celebs.txt',
-    './files/politicians.txt'
+    'files/hollywood_celebs.txt',
+    'files/forbes_billionaires.txt',
+    'files/general_celebs.txt',
+    'files/politicians.txt'
 ]
 
+files = list(map(lambda x: os.path.join(directory_of_generate_hash, x), files))
+print(files)
 
 def file_to_list(file_path):
     #Usage: converts the file into a list of words 
@@ -36,7 +41,7 @@ def generate_hashmap_of_famous_names(file_paths):
             #Store Last Name for people refered to by their last names 
             split_name = name.split(" ")
             if len(split_name) >= 2:
-                hashmap[first_letter].append(split_name[-1])
+                hashmap[split_name[-1][0]].append(split_name[-1])
 
     return hashmap
 
@@ -56,4 +61,4 @@ def initialize_hashmap():
     get_total_hashmap_size(hashmap)
     return hashmap
 
-initialize_hashmap()
+celeb_hashmap = initialize_hashmap()
