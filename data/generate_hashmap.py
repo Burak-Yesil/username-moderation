@@ -28,7 +28,7 @@ def generate_hashmap_of_famous_names(file_paths):
     #We are building a hashmap instead of a set because we want to be able to detect names that closely resemble famous names
     global_list = []
     hashmap = defaultdict(list)
-
+    print("Initializing Hashmap - Reading Files:")
     for path in files:
         print(path)
         names = file_to_list(path)
@@ -43,7 +43,7 @@ def generate_hashmap_of_famous_names(file_paths):
             # split_name = name.split(" ")
             # if len(split_name) >= 2:
             #     hashmap[split_name[-1][0]].append(split_name[-1])
-
+    print("Hashmap Intialized - Ready to Use...")
     return hashmap
 
 

@@ -7,7 +7,9 @@ def check_similarity(input_name, target_names, threshold=80):
         similarity_score = fuzz.ratio(input_name.lower(), target_name.lower())
         if similarity_score >= threshold:
             similar_names.append(target_name)
-            print(f"Potential Match: {target_name}")
+        
+    
+    print(f"Similar Match: {str(similar_names)}")
 
     return len(similar_names) > 0
 
