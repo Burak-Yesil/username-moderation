@@ -1,6 +1,7 @@
 from collections import defaultdict
 import os
 
+
 directory_of_generate_hash = os.path.dirname(os.path.abspath(__file__))
 
 #Helper Functions:
@@ -11,8 +12,7 @@ files = [
     'files/politicians.txt'
 ]
 
-files = list(map(lambda x: os.path.join(directory_of_generate_hash, x), files))
-print(files)
+files = list(map(lambda x: os.path.join(directory_of_generate_hash, x), files)) #Adding absolute path to files 
 
 def file_to_list(file_path):
     #Usage: converts the file into a list of words 
@@ -33,15 +33,16 @@ def generate_hashmap_of_famous_names(file_paths):
         print(path)
         names = file_to_list(path)
         for name in names:
+            name = name.strip()
             first_letter = name[0].lower()
 
             #Store First Name
             hashmap[first_letter].append(name)
 
-            #Store Last Name for people refered to by their last names 
-            split_name = name.split(" ")
-            if len(split_name) >= 2:
-                hashmap[split_name[-1][0]].append(split_name[-1])
+            # #Store Last Name for people refered to by their last names 
+            # split_name = name.split(" ")
+            # if len(split_name) >= 2:
+            #     hashmap[split_name[-1][0]].append(split_name[-1])
 
     return hashmap
 
